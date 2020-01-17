@@ -41,15 +41,16 @@ while True:
             if i + n > int(shls[-1][0]):
                 if lval[shl[n]] + 1 <= i:
                     shls.append(str(i)+shl[n]+"0")
-    for j in range(0,len(shls)-1):
-        if int(shls[j][0]) + lval[shls[j][1]] > int(shls[j+1][0]) + lval[shls[j+1][1]]:
-            shls[j],shls[j+1] = shls[j+1],shls[j]
+    for g in range(3):     
+        for j in range(0,len(shls)-1):
+            if int(shls[j][0]) + lval[shls[j][1]] > int(shls[j+1][0]) + lval[shls[j+1][1]]:
+                shls[j],shls[j+1] = shls[j+1],shls[j]
     for i in range(0,len(shls)):
         for j in range(0,(2*(2*(lval[shls[i][1]])+1))):            
             if sumn < z:            	
                 b,c = shls[i][0:2],int(shls[i].replace(shls[i][0:2],''))
                 shls[i] = b + str(int(c)+1)
-                sumn+=1                
+                sumn+=1                            
         if str(shls[i][2]) != '0':
             st.append(shls[i])
     for i in range(0,len(st)):
