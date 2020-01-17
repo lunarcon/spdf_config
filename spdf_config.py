@@ -45,19 +45,18 @@ while True:
         if int(shls[j][0]) + lval[shls[j][1]] > int(shls[j+1][0]) + lval[shls[j+1][1]]:
             shls[j],shls[j+1] = shls[j+1],shls[j]
     for i in range(0,len(shls)):
-        for j in range(0,(2*(2*(lval[shls[i][1]])+1))):
-            sumn += 1
-            if sumn <= z:
-                b,c = shls[i][0:2],shls[i][2]
+        for j in range(0,(2*(2*(lval[shls[i][1]])+1))):            
+            if sumn < z:            	
+                b,c = shls[i][0:2],int(shls[i].replace(shls[i][0:2],''))
                 shls[i] = b + str(int(c)+1)
+                sumn+=1                
         if str(shls[i][2]) != '0':
             st.append(shls[i])
     for i in range(0,len(st)):
-        st[i] = st[i][0:2] + st[i].replace(st[i][0:2],'').translate(SUP)
-        
+        st[i] = st[i][0:2] + st[i].replace(st[i][0:2],'').translate(SUP)        
         sr+=st[i]
     try:
-        sr=symbol[z-1]+" "+sr
+        sr=symbol[z-1]+" " +sr
     except:
         sr="Unknown Element "+sr
     print(sr)
